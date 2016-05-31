@@ -11,6 +11,7 @@
   with_items:
     - ssh_config
     - sshd_config
+  notify: restart ssh
 
 - name: create safe ssh keys
   become: yes
