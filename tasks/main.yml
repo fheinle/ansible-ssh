@@ -36,3 +36,19 @@
     group=root
     mode=0644
   with_items: ssh_users
+
+- name: create group for ssh users
+  become: yes
+  group:
+    name="ssh-user"
+    state=present
+
+- name: add system users
+  become: yes
+  user:
+    name={{ item }}
+    group=users
+    groups="ssh-user, adm, sudo"
+    shell="/bin/bash"
+    state=present
+  with_items: ssh_users
