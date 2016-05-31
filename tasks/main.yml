@@ -48,7 +48,7 @@
   user:
     name={{ item }}
     group=users
-    groups="ssh-user, adm, sudo"
+    groups="ssh-user,adm,sudo"
     shell="/bin/bash"
     state=present
   with_items: ssh_users
