@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
-AddressFamily inet
+AddressFamily any
 Port 22
 Protocol 2
 UsePrivilegeSeparation yes
