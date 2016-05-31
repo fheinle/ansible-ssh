@@ -31,7 +31,7 @@
   become: yes
   copy:
     src=authorized_keys/{{ item }}.pub
-    dest=/etc/ssh/authorized_keys/
+    dest=/etc/ssh/authorized_keys/{{ item }}
     owner=root
     group=root
     mode=0644
