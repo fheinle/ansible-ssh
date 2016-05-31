@@ -26,3 +26,13 @@
     owner=root
     group=root
     mode=0755
+
+- name: install ssh pubkeys
+  become: yes
+  copy:
+    src=authorized_keys/{{ item }}
+    dest=/etc/ssh/authorized_keys/
+    owner=root
+    group=root
+    mode=0644
+  with_items: ssh_users
