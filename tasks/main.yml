@@ -17,3 +17,12 @@
   become: yes
   script: ssh-keys.sh creates=/etc/ssh/ansible_was_here
   notify: restart ssh
+
+- name: create directory for authorized keys
+  become: yes
+  file:
+    path=/etc/ssh/authorized_keys
+    state=directory
+    owner=root
+    group=root
+    mode=0755
