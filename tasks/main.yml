@@ -30,7 +30,7 @@
 - name: install ssh pubkeys
   become: yes
   copy:
-    src=authorized_keys/{{ item }}
+    src=authorized_keys/{{ item }}.pub
     dest=/etc/ssh/authorized_keys/
     owner=root
     group=root
