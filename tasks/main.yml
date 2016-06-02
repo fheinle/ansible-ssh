@@ -17,3 +17,38 @@
   become: yes
   script: ssh-keys.sh creates=/etc/ssh/ansible_was_here
   notify: restart ssh
+
+- name: create directory for authorized keys
+  become: yes
+  file:
+    path=/etc/ssh/authorized_keys
+    state=directory
+    owner=root
+    group=root
+    mode=0755
+
+- name: install ssh pubkeys
+  become: yes
+  copy:
+    src=authorized_keys/{{ item }}.pub
+    dest=/etc/ssh/authorized_keys/{{ item }}
+    owner=root
+    group=root
+    mode=0644
+  with_items: ssh_users
+
+- name: create group for ssh users
+  become: yes
+  group:
+    name="ssh-user"
+    state=present
+
+- name: add system users
+  become: yes
+  user:
+    name={{ item }}
+    group=users
+    groups="ssh-user,adm,sudo"
+    shell="/bin/bash"
+    state=present
+  with_items: ssh_users
