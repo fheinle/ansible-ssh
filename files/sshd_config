@@ -12,6 +12,7 @@ PermitRootLogin no
 StrictModes yes
 RSAAuthentication yes
 PubkeyAuthentication yes
+AuthorizedKeysFile /etc/ssh/authorized_keys/%u
 IgnoreRhosts yes
 IgnoreUserKnownHosts yes
 HostBasedAuthentication no
