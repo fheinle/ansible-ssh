@@ -5,6 +5,8 @@ python: "2.7"
 
 before_install:
   - sudo apt-get update -qq
+  - mkdir authorized_keys
+  - touch authorized_keys/ansible.pub
 
 install:
   # Install Ansible.
