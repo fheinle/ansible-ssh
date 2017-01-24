@@ -46,7 +46,6 @@
     owner=root
     group=root
     mode=0644
-  if
   when:
     - ansible_virtualization_type == 'virtualbox'
     - "{{ ssh_copy_vagrant_key }}" == True
