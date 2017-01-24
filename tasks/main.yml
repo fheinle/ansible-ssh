@@ -35,7 +35,7 @@
     owner=root
     group=root
     mode=0644
-  with_items: ssh_users
+  with_items: "{{ ssh_users }}"
 
 - name: install vagrant ssh pubkey
   become: yes
