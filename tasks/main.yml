@@ -37,6 +37,20 @@
     mode=0644
   with_items: ssh_users
 
+- name: install vagrant ssh pubkey
+  become: yes
+  copy:
+    src=/home/vagrant/.ssh/authorized_keys
+    remote_src=True
+    dest=/etc/ssh/authorized_keys/vagrant
+    owner=root
+    group=root
+    mode=0644
+  if
+  when:
+    - ansible_virtualization_type == 'virtualbox'
+    - "{{ ssh_copy_vagrant_key }}" == True
+
 - name: create group for ssh users
   become: yes
   group:

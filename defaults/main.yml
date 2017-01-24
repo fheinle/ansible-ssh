@@ -2,3 +2,4 @@
 
 ssh_users:
   - ansible
+ssh_copy_vagrant_key: False
