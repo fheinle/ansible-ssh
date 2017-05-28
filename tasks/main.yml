@@ -64,4 +64,4 @@
     groups="ssh-user,adm,sudo"
     shell="/bin/bash"
     state=present
-  with_items: ssh_users
+  with_items: "{{ ssh_users }}"
